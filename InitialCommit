@@ -5,5 +5,28 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  /* IDEA for the implementation of projecct
+      buttonHouse1 #1
+      buttonHouse2 #2
+      buttonHouse3 #3
+      buttonHouse4 #4
+      buttonMainTree #5
+    if(button#Pressed)
+    {
+      turn moter#(180);
+      bool button#stolen=true;
+    }
 
+    new method unSteal()
+    {
+      if(unstealButtonPressed)
+      {
+        if(button#Stolen)
+        {
+          turn moter#(180);
+          button#Stolen=false;
+        }
+      }
+    }
+  */
 }
