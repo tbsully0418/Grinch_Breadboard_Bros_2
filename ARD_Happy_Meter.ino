@@ -1,29 +1,92 @@
 #include <Servo.h>
 
-const int buttonPin = 2;  // the number of the pushbutton pin
-Servo test;
-bool isStolen1=true;
 
-int buttonState = 0;  // variable for reading the pushbutton status
+Servo houseW;
+Servo houseE;
+Servo houseC;
+Servo tree;
+bool notStolenW=true;
+bool notStolenE=true;
+bool notStolenC=true;
+bool notStolenT=true;
+const int buttonPinW = 2; 
+const int buttonPinE = 3; 
+const int buttonPinC = 4; 
+const int buttonPinT = 5; 
+const int buttonPinR=6;
+
+
+
+int buttonStateW = 0;
+int buttonStateE = 0;
+int buttonStateC = 0;
+int buttonStateT = 0;
+int buttonStateR=0;
 
 void setup() 
 {
-  test.attach(10);
-  pinMode(buttonPin, INPUT);
+  houseW.attach(13);
+  houseE.attach(12);
+  houseC.attach(11);
+  tree.attach(10);
+  pinMode(buttonPinW, INPUT);
+  pinMode(buttonPinE, INPUT);
+  pinMode(buttonPinC, INPUT);
+  pinMode(buttonPinT, INPUT);
+  pinMode(buttonPinR,INPUT);
 }
 
 void loop() {
   // read the state of the pushbutton value:
-  buttonState = digitalRead(buttonPin);
+  buttonStateW = digitalRead(buttonPinW);
+  buttonStateE = digitalRead(buttonPinE);
+  buttonStateC = digitalRead(buttonPinC);
+  buttonStateT = digitalRead(buttonPinT);
+  buttonStateR = digitalRead(buttonPinR);
 
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if ((buttonState == LOW)&&isStolen1) 
+  
+  if ((buttonStateW == HIGH)&&notStolenW) 
   {
-    test.write(180);
-    isStolen1=false;
+    houseW.write(180);
+    notStolenW=false;
   } 
-  else 
+
+  if ((buttonStateE == HIGH)&&notStolenE) 
   {
-    test.write(0);
+    houseE.write(180);
+    notStolenE=false;
+  } 
+
+  if ((buttonStateC == HIGH)&&notStolenC) 
+  {
+    houseC.write(180);
+    notStolenC=false;
+  } 
+
+  if ((buttonStateT == HIGH)&&notStolenT) 
+  {
+    tree.write(180);
+    notStolenT=false;
+  } 
+
+  if(buttonStateR==HIGH)
+  {
+    if(!notStolenW)
+    {
+      houseW.write(0);
+    }
+    if(!notStolenE)
+    {
+      houseE.write(0);
+    }
+    if(!notStolenC)
+    {
+      houseC.write(0);
+    }
+    if(!notStolenT)
+    {
+      tree.write(0);
+    }
+    
   }
 }
