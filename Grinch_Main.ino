@@ -14,6 +14,7 @@ const int buttonPinE = 3;
 const int buttonPinC = 4; 
 const int buttonPinT = 5; 
 const int buttonPinR=6;
+const int ledPin=7;
 
 
 
@@ -34,6 +35,7 @@ void setup()
   pinMode(buttonPinC, INPUT);
   pinMode(buttonPinT, INPUT);
   pinMode(buttonPinR,INPUT);
+  pinMode(ledPin,OUTPUT);
   houseW.write(0);
   houseE.write(0);
   houseC.write(0);
@@ -47,7 +49,7 @@ void loop() {
   buttonStateC = digitalRead(buttonPinC);
   buttonStateT = digitalRead(buttonPinT);
   buttonStateR = digitalRead(buttonPinR);
- 
+  digitalWrite(ledPin,HIGH);
 
   
   if ((buttonStateW == HIGH)&&notStolenW) 
