@@ -11,30 +11,25 @@ Description: The code for our Grinch Project including buttons that allow the Gr
 
 // Declaration Zone
 
-// W stands for west or left if looking at project.
-// E stands for east or right if looking at project
-// C Stands for center or middle house
-// T stands for Tree
-// R stands for return or reverse
-
 // Variabels Representing Each Servo one for each house and oone for the tree.
-Servo houseW;        
-Servo houseE;
-Servo houseC;
+
+Servo houseW;  // W stands for west or left if looking at project.        
+Servo houseE;  // E stands for east or right if looking at project
+Servo houseC;  // C Stands for center or middle house
 Servo tree;
 
 // Bools to tell if the Grinch has stolen from a certain area or not
 bool notStolenW=true;
 bool notStolenE=true;
 bool notStolenC=true;
-bool notStolenT=true;
+bool notStolenT=true;  // T stands for Tree
 
 // Assigning each button & the LED a pin on the arduino (small numbers)
 const int buttonPinW = 2; 
 const int buttonPinE = 3; 
 const int buttonPinC = 4; 
 const int buttonPinT = 5; 
-const int buttonPinR=6;
+const int buttonPinR=6;    // R stands for return or reverse
 const int ledPin=7;
 
 // the int that tells if a button is pressed or not
@@ -82,6 +77,7 @@ void loop()
   digitalWrite(ledPin,HIGH);
 
   // the code for the buttons that turns a house around to stolen side and sets the stolen to bool to match
+  
   //House W
   if ((buttonStateW == HIGH)&&notStolenW) 
   {
@@ -130,6 +126,5 @@ void loop()
       tree.write(0);
       notStolenT=true;
     }
-    
   }
 }
